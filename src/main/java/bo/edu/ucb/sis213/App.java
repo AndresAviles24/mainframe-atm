@@ -65,14 +65,14 @@ public class App {
 
 // Inicio del programa, con el login
     public static boolean Login(String usernameIngresado, String passwordIngresado) {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
 //        System.out.println("Bienvenido al Cajero Automático.");
         
         boolean flag = false;
         Connection connection = null;
-        con = connection;
         try {
             connection = ConexionBDD.getConnection();
+            con = connection;
         } catch (SQLException ex) {
             System.err.println("No se puede conectar a Base de Datos");
             ex.printStackTrace();
@@ -99,17 +99,17 @@ public class App {
                 }
             }
         }
-        scanner.close();
+//        scanner.close();
         return flag;
     }
 
     public static void depositar(double cantidad){
-        MovimientosBancarios.realizarDeposito(con, cantidad);
+        MovimientosBancarios.realizarDeposito(App.getConection(), cantidad);
     }
     public static void retirar(double cantidad){
-        MovimientosBancarios.realizarRetiro(con, cantidad);
+        MovimientosBancarios.realizarRetiro(App.getConection(), cantidad);
     }
     public static void nuevoPassw(String passwordIngresado, String nuevoPassword, String confirmacionPassword){
-        CambiosCuenta.cambiarPassword(con, passwordIngresado, nuevoPassword, confirmacionPassword);
+        CambiosCuenta.cambiarPassword(App.getConection(), passwordIngresado, nuevoPassword, confirmacionPassword);
     }
 }

@@ -16,7 +16,7 @@ import bo.edu.ucb.sis213.ConexionBDD;
 import javax.swing.JOptionPane;
 
 public class App {
-	private static int intentos;
+	private static int intentos = 3;
      private static int usuarioId;
      private static double saldo;
      private static String passwordActual;
